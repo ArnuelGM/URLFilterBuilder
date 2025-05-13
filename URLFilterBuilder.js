@@ -4,7 +4,7 @@
 export class URLFilterBuilder {
   constructor() {
     this.filters = {};
-    this.allowedOperators = ['>', '>=', '<', '<=', '!=', '~', 'in', '!in', '><'];
+    // this.allowedOperators = ['>', '>=', '<', '<=', '!=', '~', 'in', '!in', '><'];
   }
 
   /**
@@ -81,6 +81,17 @@ export class URLFilterBuilder {
    */
   like(key, value) {
     this.filters[key] = `~:${this._encodeValue(value)}`;
+    return this;
+  }
+
+  /**
+   * Agrega un filtro "not like" (no contiene).
+   * @param {string} key - Nombre del parámetro a filtrar.
+   * @param {string} value - Subcadena a buscar.
+   * @returns {URLFilterBuilder} - La instancia actual para encadenar métodos.
+   */
+  notLike(key, value) {
+    this.filters[key] = `!~:${this._encodeValue(value)}`;
     return this;
   }
 

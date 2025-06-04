@@ -14,7 +14,7 @@ export class URLFilterBuilder {
    * @returns {URLFilterBuilder} - La instancia actual para encadenar métodos.
    */
   equals(key, value) {
-    this.filters[key] = this._encodeValue(value);
+    this.filters[key] = `=:${this._encodeValue(value)}`;
     return this;
   }
 

@@ -67,7 +67,7 @@ def transform_type(input_value: str, type_key: TypeKey):
     return transformed_type
 
 def get_operator_and_typed_value(raw_operator_value: list[str], type_key: TypeKey):
-    operator_value = raw_operator_value.split(":")
+    operator_value = raw_operator_value.split(":", 1)
     if len(operator_value) == 1:
         typed_value = transform_type(operator_value[0], type_key)
         return ("=", typed_value)
